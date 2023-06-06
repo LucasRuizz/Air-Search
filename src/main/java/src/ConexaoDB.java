@@ -9,7 +9,8 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-
+import javax.swing.JFrame.*;
+import javax.swing.JTextField;
 
 public class ConexaoDB{
     
@@ -25,9 +26,8 @@ public class ConexaoDB{
     //e.printStackTrace();
 //}
     }
-    
-    public static void main(String args[]){
-        String sql = "select * from poluicaoglobal where ï»¿Country ='Brazil'";
+    public static void SearchData(String cidade){
+         String sql = "SELECT * FROM poluicaoglobal WHERE ï»¿Country = 'Brazil' AND city LIKE '%" + cidade + "%'";
         Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet rset = null;
@@ -61,4 +61,9 @@ public class ConexaoDB{
             }  
         }
     }
+    
+    
+    public static void main(String args[]){
+        
+}
 }
