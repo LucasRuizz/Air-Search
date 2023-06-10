@@ -111,10 +111,12 @@ public class Search extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(PesquisarButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                                .addComponent(Filtroregiao, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(FiltroRegiao2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(165, Short.MAX_VALUE))
+                                .addComponent(Filtroregiao, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(FiltroRegiao2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(PesquisarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,18 +129,19 @@ public class Search extends javax.swing.JFrame {
                 .addComponent(AddRegiaoInput)
                 .addGap(18, 18, 18)
                 .addComponent(FiltroRegiao2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                .addGap(130, 130, 130)
                 .addComponent(PesquisarButton)
-                .addGap(136, 136, 136))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void PesquisarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarButtonActionPerformed
-        ConexaoDB db = new ConexaoDB();
-        String filtro = Filtroregiao.getText(); 
-        db.SearchData(filtro); 
+    
+        ProjetoTeste janela = new ProjetoTeste(1000);
+        
+        janela.setVisible(true);
     }//GEN-LAST:event_PesquisarButtonActionPerformed
 
     private void FiltroregiaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltroregiaoActionPerformed

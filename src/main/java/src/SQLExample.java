@@ -10,7 +10,6 @@ public class SQLExample {
         String username = "root"; // Nome de usuário do banco de dados
         String password = "12345"; // Senha do banco de dados
 
-        // Declaração SQL
         String sql = "select * from poluicaoglobal where ï»¿Country ='Brazil'";
 
         try {
