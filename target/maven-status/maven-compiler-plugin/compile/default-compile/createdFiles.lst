@@ -1,19 +1,8 @@
-src\Login$1.class
-src\ProjetoTeste$1.class
 src\Search$5.class
-src\ConexaoDB.class
 src\Search$3.class
-src\Input$1.class
-src\Login.class
-src\Input.class
-src\ProjetoTeste.class
 src\Search$1.class
-src\Input$3.class
 src\SQLExample.class
-src\App.class
-src\Input$2.class
 src\Search$4.class
-src\ProjetoTeste$2.class
 src\Usuario.class
 src\Pesquisador.class
 src\Search.class
@@ -21,5 +10,4 @@ src\DadosCidade.class
 src\Search$2.class
 src\Administrador.class
 src\Instituicao.class
-src\Login$2.class
 src\RoundedBorder.class
