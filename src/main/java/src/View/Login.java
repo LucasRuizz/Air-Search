@@ -62,8 +62,7 @@ public class Login extends JFrame {
                     boolean loginCorreto = validation.ValidationLogin(login, senha);
                     if (loginCorreto) {
                         dispose(); // Fecha a tela de login
-                        App app = new App();
-                        app.Run();
+                       new Home();
                     } else {
                         // Credenciais incorretas, exibe uma mensagem de erro
                         JOptionPane.showMessageDialog(null, "Login ou senha incorretos. Tente novamente.");

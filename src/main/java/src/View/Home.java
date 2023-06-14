@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import src.Controller.ConexaoDB;
 /**
  *
@@ -31,6 +33,7 @@ public class Home extends JFrame {
         add(buttonConsulta);
 
         JButton buttonPublicarPesquisa = new JButton("Publicar Pesquisa");
+        buttonPublicarPesquisa.setVisible(false);
         buttonPublicarPesquisa.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Lógica para a opção "Publicar Pesquisa"
@@ -49,8 +52,12 @@ public class Home extends JFrame {
         JButton buttonMeusDados = new JButton("Meus Dados");
         buttonMeusDados.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                MeusDados data= new MeusDados();
-                // Lógica para a opção "Meus Dados"
+                try {
+                    MeusDados data= new MeusDados();
+                    // Lógica para a opção "Meus Dados"
+                } catch (Exception ex) {
+                    Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         add(buttonMeusDados);
@@ -67,4 +74,3 @@ public class Home extends JFrame {
         });
     }
 }
-

@@ -1,6 +1,6 @@
 
 package src.View;
-import src.Controller.InsertRegister;
+import src.Controller.Registers.InsertRegister;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

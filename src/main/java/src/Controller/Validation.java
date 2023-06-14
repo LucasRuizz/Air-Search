@@ -8,13 +8,14 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 public class Validation {
+   public String acesso="";
     public boolean ValidationLogin(String email, String senha) throws Exception {
         ConexaoDB db = new ConexaoDB();
         String sql = "SELECT * FROM tb_usuarios WHERE email = ?";
         boolean loginCorreto = false;
         String nome = "";
         String endereco= "";
-        String acesso="";
+        
        
         try (Connection conn = db.CriaConexaoMysql();
              PreparedStatement stmt = conn.prepareStatement(sql)) {

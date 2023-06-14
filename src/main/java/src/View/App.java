@@ -1,6 +1,6 @@
 
 package src.View;
-
+import src.Controller.Validation;
 import src.View.Input;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -36,7 +36,14 @@ public class App extends JFrame {
             label.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 0, 0, 0));
             panel.add(label);
         }
-        panel.add(new Home());
+       Validation validation = new Validation();
+      if (validation.acesso.equals("")) {
+            panel.add(new Home());
+        }else{
+          System.out.println("Teste admin" + validation.acesso);
+          
+      }
+
 
         getContentPane().add(panel);
     }
