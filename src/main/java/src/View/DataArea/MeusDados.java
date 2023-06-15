@@ -1,19 +1,10 @@
-package src.View;
+package src.View.DataArea;
 import src.Controller.ConexaoDB;
 import java.awt.Font;
 import javax.swing.*;
 
 public class MeusDados extends JFrame {
-    
-    public MeusDados() throws Exception{
-    ConexaoDB db = new ConexaoDB();
-    db.CriaConexaoMysql();
-    }
-    private JLabel h1;
-    private String nome;
-    private String email;
-    private String endereco;
-    private String acesso;
+     private JLabel h1;
     private JPanel panel;
     private JLabel labelNome;
     private JLabel labelEmail;
@@ -27,17 +18,22 @@ public class MeusDados extends JFrame {
     private JTextField inputEmail;
     private JTextField inputEndereco;
     private JTextField inputAcesso;
+    public String nome;
+    public String email;
+    public String endereco;
+    public String acesso;
+   
+        
+    public MeusDados(String acesso,String nome,String endereco,String email) throws Exception{
+        
     
-    
- 
-    public void setDados(String nome, String email, String endereco, String acesso) {
         this.nome = nome;
         this.email = email;
         this.endereco = endereco;
         this.acesso = acesso;
-    }
     
-    public void render() {
+    
+  
         this.setSize(600, 400);
         this.panel = new JPanel();
         this.panel.setLayout(null);
@@ -111,8 +107,7 @@ public class MeusDados extends JFrame {
             inputEmail.requestFocus();
         });
 
-        this.editarEndereco.addActionListener(e -> {
-            
+        this.editarEndereco.addActionListener(e -> {  
             labelEndereco.setVisible(false);
             inputEndereco.setVisible(true);
             inputEndereco.requestFocus();
@@ -123,5 +118,10 @@ public class MeusDados extends JFrame {
         this.add(panel);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    ConexaoDB db = new ConexaoDB();
+    db.CriaConexaoMysql();
     }
-}
+  
+    
+    }
+ 

@@ -1,6 +1,7 @@
 package src.View;
 
 import src.Controller.ConexaoDB;
+import src.Controller.AreaController.SearchCidade;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,8 +15,7 @@ import src.Controller.ConexaoDB;
 
 public class Input extends JFrame {
     private JComboBox<String> inputComboBox;
-    private JButton addButton;
-
+    
     public Input() {
         super("Exemplo de JFrame");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,16 +30,6 @@ public class Input extends JFrame {
         inputComboBox = new JComboBox<>();
         inputComboBox.setPreferredSize(new Dimension(200, 25));
         panel.add(inputComboBox);
-
-        addButton = new JButton("+");
-        addButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        addButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Lógica para adicionar uma nova cidade ao banco de dados, se necessário
-            }
-        });
-        panel.add(addButton);
 
         JButton searchButton = new JButton("Pesquisar");
         searchButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -62,23 +52,8 @@ public class Input extends JFrame {
             rset = pstm.executeQuery();
 
             while (rset.next()) {
-                System.out.println("Cidade: " + rset.getString("city"));
-                System.out.println("Valor do índice de qualidade do ar: " + rset.getInt("AQI Value"));
-                System.out.println("Categoria de qualidade do ar: " + rset.getString("AQI Category"));
-                System.out.println("Valor do índice de qualidade do ar de CO: " + rset.getInt("CO AQI Value"));
-                System.out.println("Categoria de qualidade do ar de CO: " + rset.getString("CO AQI Category"));
-                System.out.println("Valor da qualidade do ar de ozonio: " + rset.getInt("Ozone AQI Value"));
-                System.out.println("Categoria de qualidade do ar de ozonio: " + rset.getString("Ozone AQI Category"));
-                System.out.println("Valor da qualidade do ar de NO2: " + rset.getInt("NO2 AQI Value"));
-                System.out.println("Categoria da qualidade do ar de NO2: " + rset.getString("NO2 AQI Category"));
-                
-                Graph janela = new Graph(rset.getInt("AQI Value"),
-                        rset.getInt("CO AQI Value"), rset.getInt("Ozone AQI Value"),
-                        rset.getInt("NO2 AQI Value"));
-                
-                
-        
-                janela.setVisible(true);
+               SearchCidade datacity = new SearchCidade();
+               datacity.searchcity(selectedCity);
             }
 
         } catch (Exception x) {

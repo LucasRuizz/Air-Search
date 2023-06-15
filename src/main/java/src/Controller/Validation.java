@@ -1,6 +1,6 @@
 package src.Controller;
-
-import src.View.MeusDados;
+import src.View.Home;
+import src.View.DataArea.MeusDados;
 import src.Model.DadosUsuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,12 +9,15 @@ import javax.swing.JOptionPane;
 
 public class Validation {
    public String acesso="";
+   public String nome = "";
+    public String endereco= "";
+    public String email= "";
+    
     public boolean ValidationLogin(String email, String senha) throws Exception {
         ConexaoDB db = new ConexaoDB();
         String sql = "SELECT * FROM tb_usuarios WHERE email = ?";
         boolean loginCorreto = false;
-        String nome = "";
-        String endereco= "";
+       
         
        
         try (Connection conn = db.CriaConexaoMysql();
@@ -49,10 +52,7 @@ public class Validation {
 
         if (loginCorreto) {
          System.out.println("Login correto");
-          MeusDados meusDados = new MeusDados();
-        meusDados.setDados(nome,email,endereco,acesso);
-         meusDados.render();
-         meusDados.setVisible(true);
+       
           return true;
                 }
             else {
@@ -62,7 +62,9 @@ public class Validation {
             return false;
         }
     }
-
+    public void RunHome(){
+        new Home(acesso,email,endereco,nome);
+    }
     public static void main(String args[]) throws Exception {
         Validation validacao = new Validation();
         boolean loginValido = validacao.ValidationLogin("master@gmail.com", "master102030");

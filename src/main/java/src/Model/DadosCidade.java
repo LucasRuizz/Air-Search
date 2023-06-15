@@ -3,18 +3,18 @@ package src.Model;
 
 public class DadosCidade {
     // Atributos
-    String country;
-    String city;
-    int aqiValue;
-    String aqiCategory;
-    int COaqiValue;
-    String COaqiCategory;
-    int OzoneAqiValue;
-    String OzoneAqiCategory;
-    int NO2aqiValue;
-    String NO2aqiCategory;
-    int PM25aqiValue;
-    String PM25aqiCategory;
+    public String country;
+   public String city;
+   public int aqiValue;
+   public  String aqiCategory;
+   public  int COaqiValue;
+    public String COaqiCategory;
+   public  int OzoneAqiValue;
+   public  String OzoneAqiCategory;
+   public int NO2aqiValue;
+    public String NO2aqiCategory;
+    public int PM25aqiValue;
+    public String PM25aqiCategory;
 
     public DadosCidade(String country, String city, int aqiValue, String aqiCategory, 
             int COaqiValue, String COaqiCategory, int OzoneAqiValue, String OzoneAqiCategory, 
