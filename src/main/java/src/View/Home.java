@@ -20,9 +20,12 @@ public class Home extends JFrame {
     protected String email;
     protected String endereco;
     protected String acesso;
+    private JTextField textFieldLogin;
+    private JTextField intValueTextField = new JTextField();
 
     
     public Home(String acesso,String email,String endereco,String nome) {
+         
         
         setTitle("Opções do Sistema");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -66,6 +69,7 @@ public class Home extends JFrame {
         buttonPublicarPesquisa.setVisible(true);
         buttonPublicarPesquisa.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                
                 // Lógica para a opção "Publicar Pesquisa"
             }
         });
@@ -74,7 +78,7 @@ public class Home extends JFrame {
         JButton buttonEditarPesquisa = new JButton("Editar Pesquisa");
         buttonEditarPesquisa.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Lógica para a opção "Editar Pesquisa"
+               
             }
         });
         add(buttonEditarPesquisa);

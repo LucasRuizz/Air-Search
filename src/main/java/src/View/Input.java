@@ -2,6 +2,8 @@ package src.View;
 
 import src.Controller.ConexaoDB;
 import src.Controller.AreaController.SearchCidade;
+import src.View.DataArea.AreaDadosCidade;
+import src.Model.DadosCidade;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -53,7 +55,9 @@ public class Input extends JFrame {
 
             while (rset.next()) {
                SearchCidade datacity = new SearchCidade();
-               datacity.searchcity(selectedCity);
+            DadosCidade objetcity =  datacity.searchcity(selectedCity);
+             new AreaDadosCidade(objetcity);
+               
             }
 
         } catch (Exception x) {

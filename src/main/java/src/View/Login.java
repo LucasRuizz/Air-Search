@@ -17,6 +17,7 @@ public class Login extends JFrame {
         setSize(600, 500);
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
+        panel.setBackground(Color.blue);
 
         JLabel labelLogo = new JLabel();
         ImageIcon logoImage = new ImageIcon("caminho/para/sua/logo.png");
@@ -25,7 +26,9 @@ public class Login extends JFrame {
 
         JPanel formPanel = new JPanel();
         formPanel.setLayout(new GridLayout(4, 2, 10, 10));
-        formPanel.setSize(600, 500);
+        formPanel.setBackground(Color.WHITE);
+        formPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
         JLabel labelLogin = new JLabel("Login:");
         formPanel.add(labelLogin);
 
@@ -39,12 +42,16 @@ public class Login extends JFrame {
         formPanel.add(passwordField);
 
         JLabel labelcad = new JLabel("Não possui login?");
+        labelcad.setForeground(Color.WHITE);
         JButton buttoncadastro = new JButton("Me cadastrar");
+        buttoncadastro.setBackground(Color.cyan);
+        buttoncadastro.setForeground(Color.WHITE);
         formPanel.add(labelcad);
         formPanel.add(buttoncadastro);
         panel.add(formPanel, BorderLayout.CENTER);
 
         JButton buttonLogin = new JButton("Login");
+        buttonLogin.setBackground(Color.cyan);
 
         buttoncadastro.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -62,15 +69,13 @@ public class Login extends JFrame {
                     boolean loginCorreto = validation.ValidationLogin(login, senha);
                     if (loginCorreto) {
                         dispose(); // Fecha a tela de login
-                    validation.RunHome();
-                    
+                        validation.RunHome();
                     } else {
                         // Credenciais incorretas, exibe uma mensagem de erro
                         JOptionPane.showMessageDialog(null, "Login ou senha incorretos. Tente novamente.");
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();
-                  
                 }
             }
         });

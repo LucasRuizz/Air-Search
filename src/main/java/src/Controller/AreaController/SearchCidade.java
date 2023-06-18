@@ -14,7 +14,7 @@ import src.View.Graph;
  * @author Lucas
  */
 public class SearchCidade {
-   public  String country;
+   public String country;
    public String city;
    public int aqiValue;
    public String aqiCategory;
@@ -23,16 +23,17 @@ public class SearchCidade {
    public int OzoneAqiValue;
    public String OzoneAqiCategory;
    public int NO2aqiValue;
-    public String NO2aqiCategory;
+   public String NO2aqiCategory;
    public int PM25aqiValue;
    public String PM25aqiCategory;
     
-    public  void searchcity(String cidade) throws Exception{
+    public DadosCidade searchcity(String cidade) throws Exception{
         ConexaoDB db = new ConexaoDB();
         String sql = "SELECT * FROM poluicaoglobal WHERE ï»¿Country = 'Brazil' AND city LIKE '%" + cidade + "%'";
         Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet rset = null;
+        DadosCidade dadoscidade = null; 
          try {
             conn = db.CriaConexaoMysql();
             pstm = conn.prepareStatement(sql);
@@ -51,7 +52,7 @@ public class SearchCidade {
                 this.NO2aqiCategory = rset.getString("NO2 AQI Category");
                 this.PM25aqiValue = rset.getInt("PM2.5 AQI Value");
                 this.PM25aqiCategory = rset.getString("PM2.5 AQI Category");
-            DadosCidade dadoscidade =  new DadosCidade(
+                dadoscidade =  new DadosCidade(
                 this.country,
                 this.city ,
                 this.aqiValue ,
@@ -64,13 +65,13 @@ public class SearchCidade {
                 this.NO2aqiCategory ,
                 this.PM25aqiValue ,
                 this.PM25aqiCategory);
-                
+                System.out.println(dadoscidade.city);
             }
             
         } catch (Exception x) {
             
             x.printStackTrace();
         }
-         
+         return dadoscidade;
     }
 }
