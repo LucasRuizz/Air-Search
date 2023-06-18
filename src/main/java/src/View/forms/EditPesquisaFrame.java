@@ -1,4 +1,4 @@
-package src.View;
+package src.View.forms;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;

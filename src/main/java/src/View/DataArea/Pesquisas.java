@@ -30,8 +30,9 @@ public class Pesquisas extends JFrame {
         // Configurar o layout e adicionar a lista ao JFrame
         this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
         this.getContentPane().add(cidadeList);
-
+          
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
 
     public static void main(String[] args) {

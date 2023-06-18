@@ -4,6 +4,8 @@
  */
 package src.View;
 import src.View.DataArea.MeusDados;
+import src.View.forms.NovaPesquisa;
+import src.View.DataArea.Pesquisas;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,8 +22,7 @@ public class Home extends JFrame {
     protected String email;
     protected String endereco;
     protected String acesso;
-    private JTextField textFieldLogin;
-    private JTextField intValueTextField = new JTextField();
+    
 
     
     public Home(String acesso,String email,String endereco,String nome) {
@@ -69,8 +70,8 @@ public class Home extends JFrame {
         buttonPublicarPesquisa.setVisible(true);
         buttonPublicarPesquisa.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                
-                // Lógica para a opção "Publicar Pesquisa"
+                new NovaPesquisa();
+             
             }
         });
         add(buttonPublicarPesquisa);
@@ -78,7 +79,7 @@ public class Home extends JFrame {
         JButton buttonEditarPesquisa = new JButton("Editar Pesquisa");
         buttonEditarPesquisa.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               
+               new Pesquisas();
             }
         });
         add(buttonEditarPesquisa);
