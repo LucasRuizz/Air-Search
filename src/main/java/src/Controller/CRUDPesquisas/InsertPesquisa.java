@@ -1,7 +1,8 @@
-package src.Controller;
+package src.Controller.CRUDPesquisas;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import src.Controller.ConexaoDB;
 import src.Controller.ConexaoDB;
 import src.Model.DadosCidade;
 

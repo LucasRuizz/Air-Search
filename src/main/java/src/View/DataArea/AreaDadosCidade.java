@@ -54,7 +54,7 @@ public class AreaDadosCidade extends JFrame {
          this.GraphConsult.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Graph grafico = new Graph(cidade.COaqiValue,cidade.NO2aqiValue,
-                cidade.OzoneAqiValue,cidade.PM25aqiValue );
+                cidade.OzoneAqiValue,cidade.PM25aqiValue, cidade.aqiValue );
                 grafico.criarGrafico();
             }
         });

@@ -1,69 +1,64 @@
-package src.View.forms;
-
+package src.View.Forms;
+import src.View.Graph;
+import java.awt.Font;
+import src.Model.DadosCidade;
+import src.Controller.ConexaoDB;
+import javax.swing.*;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import java.awt.FlowLayout;
+import org.jfree.chart.ChartPanel;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class EditPesquisaFrame extends JFrame {
+    private JPanel panel;
+    private JLabel labelCity;
+    private JLabel labelAqiValue;
+    private JLabel labelAqiCategory;
+    private JLabel labelCOaqiValue;
+    private JLabel labelCOaqiCategory;
+    private JLabel labelOzoneAqiValue;
+    private JLabel labelOzoneAqiCategory;
+    private JLabel labelNO2aqiValue;
+    private JLabel labelNO2aqiCategory;
+    private JLabel labelPM25aqiValue;
+    private JLabel labelPM25aqiCategory;
+    private JPanel graphPanel;
+    private JButton GraphConsult;
 
-    private JTextField countryTextField;
-    private JTextField cityTextField;
-    private JTextField aqiValueTextField;
-    private JTextField aqiCategoryTextField;
-    private JTextField coAqiValueTextField;
-    private JTextField coAqiCategoryTextField;
-    private JTextField ozoneAqiValueTextField;
-    private JTextField ozoneAqiCategoryTextField;
-    private JTextField no2AqiValueTextField;
-    private JTextField no2AqiCategoryTextField;
-    private JTextField pm25AqiValueTextField;
-    private JTextField pm25AqiCategoryTextField;
+    public  EditPesquisaFrame (DadosCidade cidade) {
+        this.setSize(1080, 1920);
+        this.panel = new JPanel();
+        this.panel.setLayout(new BorderLayout());
 
-    public EditPesquisaFrame() {
-        setTitle("Edit Pesquisa");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new FlowLayout());
+        this.labelCity = new JLabel("Nome: " + cidade.getCity());
+        this.labelCity.setFont(new Font("Arial", Font.BOLD, 16));
+        this.panel.add(labelCity, BorderLayout.NORTH);
 
-        JLabel countryLabel = new JLabel("Country:");
-        countryTextField = new JTextField(20);
-
-        JLabel cityLabel = new JLabel("City:");
-        cityTextField = new JTextField(20);
-
-        JLabel aqiValueLabel = new JLabel("AQI Value:");
-        aqiValueTextField = new JTextField(20);
-
-        JLabel aqiCategoryLabel = new JLabel("AQI Category:");
-        aqiCategoryTextField = new JTextField(20);
-
-        JLabel coAqiValueLabel = new JLabel("CO AQI Value:");
-        coAqiValueTextField = new JTextField(20);
-
-        JLabel coAqiCategoryLabel = new JLabel("CO AQI Category:");
-        coAqiCategoryTextField = new JTextField(20);
-
-        JLabel ozoneAqiValueLabel = new JLabel("Ozone AQI Value:");
-        ozoneAqiValueTextField = new JTextField(20);
-
-        JLabel ozoneAqiCategoryLabel = new JLabel("Ozone AQI Category:");
-        ozoneAqiCategoryTextField = new JTextField(20);
-
-        JLabel no2AqiValueLabel = new JLabel("NO2 AQI Value:");
-        no2AqiValueTextField = new JTextField(20);
-
-        JLabel no2AqiCategoryLabel = new JLabel("NO2 AQI Category:");
-        no2AqiCategoryTextField = new JTextField(20);
-
-        JLabel pm25AqiValueLabel = new JLabel("PM2.5 AQI Value:");
-        pm25AqiValueTextField = new JTextField(20);
-
-        JLabel pm25AqiCategoryLabel = new JLabel("PM2.5 AQI Category:");
-        pm25AqiCategoryTextField = new JTextField(20);
-    }}
+        JPanel dataPanel = new JPanel();
+        dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
+        dataPanel.add(new JLabel("AQI Value: " + cidade.getAqiValue()));
+        dataPanel.add(new JLabel("AQI Category: " + cidade.getAqiCategory()));
+        dataPanel.add(new JLabel("CO AQI Value: " + cidade.getCOaqiValue()));
+        dataPanel.add(new JLabel("CO AQI Category: " + cidade.getCOaqiCategory()));
+        dataPanel.add(new JLabel("Ozone AQI Value: " + cidade.getOzoneAqiValue()));
+        dataPanel.add(new JLabel("Ozone AQI Category: " + cidade.getOzoneAqiCategory()));
+        dataPanel.add(new JLabel("NO2 AQI Value: " + cidade.getNO2aqiValue()));
+        dataPanel.add(new JLabel("NO2 AQI Category: " + cidade.getNO2aqiCategory()));
+        dataPanel.add(new JLabel("PM2.5 AQI Value: " + cidade.getPM25aqiValue()));
+        dataPanel.add(new JLabel("PM2.5 AQI Category: " + cidade.getPM25aqiCategory()));
+        this.panel.add(dataPanel, BorderLayout.WEST);
+        this.GraphConsult = new JButton("Consultar Gráfico");
+        this.panel.add(GraphConsult, BorderLayout.SOUTH);
         
-            
-                
+         this.GraphConsult.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Graph grafico = new Graph(cidade.COaqiValue,cidade.NO2aqiValue,
+                cidade.OzoneAqiValue,cidade.PM25aqiValue, cidade.aqiValue );
+                grafico.criarGrafico();
+            }
+        });
+        this.add(panel);
+        this.setVisible(true);
+    }
+}

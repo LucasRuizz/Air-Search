@@ -22,7 +22,7 @@ public class InsertRegister {
             stmt.setString(1, nome);
             stmt.setString(2, password);
             stmt.setString(3, email);
-            stmt.setString(4, ""); // Insira o valor para TipoAcesso
+            stmt.setString(4, TipoUsuario); // Insira o valor para TipoAcesso
             stmt.setString(5, endereco);
             
             stmt.executeUpdate();

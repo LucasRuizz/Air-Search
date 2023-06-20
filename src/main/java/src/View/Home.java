@@ -25,7 +25,7 @@ public class Home extends JFrame {
     
 
     
-    public Home(String acesso,String email,String endereco,String nome) {
+    public Home(String acesso,String email,String endereco,String nome,int codigo) {
          
         
         setTitle("Opções do Sistema");
@@ -47,7 +47,7 @@ public class Home extends JFrame {
         buttonMeusDados.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    MeusDados data= new MeusDados(acesso, nome, endereco,email);
+                    MeusDados data= new MeusDados(codigo,acesso, nome, endereco,email);
                     // Lógica para a opção "Meus Dados"
                 } catch (Exception ex) {
                     Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
@@ -88,7 +88,7 @@ public class Home extends JFrame {
         buttonMeusDados.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                 new MeusDados(acesso, nome, endereco,email);
+                 new MeusDados(codigo,acesso, nome, endereco,email);
                 } catch (Exception ex) {
                     Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
                 }

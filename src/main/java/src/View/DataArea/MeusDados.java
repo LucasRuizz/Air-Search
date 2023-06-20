@@ -1,10 +1,14 @@
 package src.View.DataArea;
+
 import src.Controller.ConexaoDB;
+import src.Controller.Registers.PutRegister;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.*;
 
 public class MeusDados extends JFrame {
-     private JLabel h1;
+    private JLabel h1;
     private JPanel panel;
     private JLabel labelNome;
     private JLabel labelEmail;
@@ -22,18 +26,13 @@ public class MeusDados extends JFrame {
     public String email;
     public String endereco;
     public String acesso;
-   
-        
-    public MeusDados(String acesso,String nome,String endereco,String email) throws Exception{
-        
-    
+
+    public MeusDados(int codigo, String acesso, String nome, String endereco, String email) throws Exception {
         this.nome = nome;
         this.email = email;
         this.endereco = endereco;
         this.acesso = acesso;
-    
-    
-  
+
         this.setSize(600, 400);
         this.panel = new JPanel();
         this.panel.setLayout(null);
@@ -96,32 +95,134 @@ public class MeusDados extends JFrame {
         this.panel.add(inputAcesso);
 
         this.editarNome.addActionListener(e -> {
-            labelNome.setVisible(false);
-            inputNome.setVisible(true);
-            inputNome.requestFocus();
+            toggleFields(labelNome, inputNome);
+            if (inputNome.isVisible()) {
+                inputNome.requestFocus();
+            }
         });
 
         this.editarEmail.addActionListener(e -> {
-            labelEmail.setVisible(false);
-            inputEmail.setVisible(true);
-            inputEmail.requestFocus();
+            toggleFields(labelEmail, inputEmail);
+            if (inputEmail.isVisible()) {
+                inputEmail.requestFocus();
+            }
         });
 
-        this.editarEndereco.addActionListener(e -> {  
-            labelEndereco.setVisible(false);
-            inputEndereco.setVisible(true);
-            inputEndereco.requestFocus();
+        this.editarEndereco.addActionListener(e -> {
+            toggleFields(labelEndereco, inputEndereco);
+            if (inputEndereco.isVisible()) {
+                inputEndereco.requestFocus();
+            }
         });
 
-      
+        inputNome.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    updateNome(codigo);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+
+        inputEmail.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    updateEmail(codigo);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+
+        inputEndereco.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    updateEndereco(codigo);
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
 
         this.add(panel);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    ConexaoDB db = new ConexaoDB();
-    db.CriaConexaoMysql();
+        ConexaoDB db = new ConexaoDB();
+        db.CriaConexaoMysql();
     }
-  
-    
+
+    private void toggleFields(JLabel label, JTextField field) {
+        label.setVisible(!label.isVisible());
+        field.setVisible(!field.isVisible());
     }
- 
+
+    private void updateNome(int codigo) {
+        String novoNome = inputNome.getText();
+        if (!novoNome.equals(nome)) {
+            nome = novoNome;
+            labelNome.setText("Nome: " + nome);
+            toggleFields(labelNome, inputNome);
+            try {
+                PutRegister putRegister = new PutRegister(codigo, nome, "", "", "");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            toggleFields(labelNome, inputNome);
+        }
+    }
+
+    private void updateEmail(int codigo) {
+        String novoEmail = inputEmail.getText();
+        if (!novoEmail.equals(email)) {
+            email = novoEmail;
+            labelEmail.setText("Email: " + email);
+            toggleFields(labelEmail, inputEmail);
+            try {
+                PutRegister putRegister = new PutRegister(codigo, "", "", email, "");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            toggleFields(labelEmail, inputEmail);
+        }
+    }
+
+    private void updateEndereco(int codigo) {
+        String novoEndereco = inputEndereco.getText();
+        if (!novoEndereco.equals(endereco)) {
+            endereco = novoEndereco;
+            labelEndereco.setText("Endereço: " + endereco);
+            toggleFields(labelEndereco, inputEndereco);
+            try {
+                PutRegister putRegister = new PutRegister(codigo, "", "", "", endereco);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            toggleFields(labelEndereco, inputEndereco);
+        }
+    }
+}

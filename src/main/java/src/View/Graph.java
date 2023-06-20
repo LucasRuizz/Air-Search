@@ -18,11 +18,12 @@ public class Graph extends JFrame{
     public int valor7;
     
     
-    public Graph(int nvalor1, int nvalor2, int nvalor3, int nvalor4){
+    public Graph(int nvalor1, int nvalor2, int nvalor3, int nvalor4, int nvalor5){
         valor1 = nvalor1;
         valor2 = nvalor2;
         valor3 = nvalor3;
         valor4 = nvalor4;
+        valor5 = nvalor5;
         
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Gráfico de Barras");
@@ -40,7 +41,7 @@ public class Graph extends JFrame{
         barra.setValue(valor2, "Valor do índice de qualidade do ar de CO", "");
         barra.setValue(valor3, "Valor da qualidade do ar de ozonio", "");
         barra.setValue(valor4, "Valor da qualidade do ar de NO2", "");
-        
+        barra.setValue(valor5, "Valor da qualidade do ar de PM2.5", "");
         
       
         JFreeChart grafico = ChartFactory.createBarChart3D

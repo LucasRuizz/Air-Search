@@ -1,6 +1,6 @@
 package src.View.forms;
 import src.Model.DadosCidade;
-import src.Controller.InsertPesquisa;
+import src.Controller.CRUDPesquisas.InsertPesquisa;
 import javax.swing.*;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
