@@ -30,7 +30,7 @@ public class Input extends JFrame {
         panel.add(selectionLabel);
 
         inputComboBox = new JComboBox<>();
-        inputComboBox.setPreferredSize(new Dimension(200, 25));
+        inputComboBox.setPreferredSize(new Dimension(300, 30));
         panel.add(inputComboBox);
 
         JButton searchButton = new JButton("Pesquisar");
@@ -90,6 +90,7 @@ public class Input extends JFrame {
         getContentPane().add(panel);
         pack();
         setLocationRelativeTo(null);
+        setSize(400, 200);
     }
 
     public void populateComboBox(List<String> cities) {

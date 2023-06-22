@@ -14,7 +14,7 @@ public class Login extends JFrame {
         setTitle("Tela de Login");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        setSize(600, 500);
+        setSize(700, 600);
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         panel.setBackground(Color.blue);
@@ -45,7 +45,7 @@ public class Login extends JFrame {
         labelcad.setForeground(Color.WHITE);
         JButton buttoncadastro = new JButton("Me cadastrar");
         buttoncadastro.setBackground(Color.cyan);
-        buttoncadastro.setForeground(Color.WHITE);
+        buttoncadastro.setForeground(Color.black);
         formPanel.add(labelcad);
         formPanel.add(buttoncadastro);
         panel.add(formPanel, BorderLayout.CENTER);

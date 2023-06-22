@@ -19,7 +19,7 @@ public class Pesquisas extends JFrame {
     private JComboBox<String> inputComboBox;
     
     public Pesquisas() {
-        super("Exemplo de JFrame");
+        super("frame pesquisas");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel = new JPanel();
@@ -56,7 +56,7 @@ public class Pesquisas extends JFrame {
             while (rset.next()) {
                SearchCidade datacity = new SearchCidade();
             DadosCidade objetcity =  datacity.searchcity(selectedCity);
-             new AreaDadosCidade(objetcity);
+             new AreaDadosCidadeAdmin(objetcity);
                
             }
 
